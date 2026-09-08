@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+    <main class="container my-5" style="max-width: 800px;">
+        
+        <!-- SECTION 1: About Us -->
+        <section class="mb-5">
+            <h4 class="section-title text-warning" style="text-align: center; margin-bottom: 30px;">--------{{ about.about_heading }}--------</h4>
+            <div class="row g-4 align-items-start mt-2">
+                <!-- Left Column: Image Box -->
+                <div class="col-md-5">
+                    <figure class="mb-4"><img class="img-fluid rounded" src="{{ about.about_image.url }}" alt="..." /></figure>
+                </div>
+                <!-- Right Column: Description Text -->
+                <div class="col-md-7">
+                    <p class="text-content">
+                        <span style="font-weight: bold;">Established</span>: {{ about.establish_time }}
+                    </p>
+                    <p class="text-content">
+                        {{ about.mission }}
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Our Story -->
+        <section class="mt-5 pt-4">
+            <h4 class="section-title text-warning" style="text-align: center;">--------Our story--------</h4>
+            <div class="row mt-4">
+                <div class="col-12">
+                    <p class="text-content">
+                        {{ about.about_body }}
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+{% endblock %}
