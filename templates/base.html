@@ -27,10 +27,21 @@
                         </div>
                     </form>
                 </div>
+                {% if not user.is_authenticated %}
                 <div class="col-4 d-flex justify-content-end align-items-center">
-                    <a class="btn btn-sm btn-warning" href="#">Login</a> &nbsp;
+                    <a class="btn btn-sm btn-warning" href="{% url 'login' %}">Login</a> &nbsp;
                     <a class="btn btn-sm btn-outline-secondary" href="{% url 'register' %}">Register</a>
                 </div>
+                {% else %}
+                <span>Logged In as {{ user }}</span>
+                &emsp;
+                &emsp;
+                <span>
+                    <div class="col-4 d-flex justify-content-end align-items-center">
+                        <a class="btn btn-sm btn-warning" href="{% url 'logout' %}">Logout</a>
+                    </div>
+                </span>
+                {% endif %}
             </div>
         </header>
         <!-- navbar-categories -->
