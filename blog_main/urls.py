@@ -23,13 +23,23 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
+    # admin panel
     path('admin/', admin.site.urls),
+    
+    # home page
     path('', views.home, name='home'),
+    
+    # blogs
     path('category/', include('blogs.urls')),
     path('blogs/<slug:slug>', BlogView.blogs, name='blogs'),
     path('about/', AboutView.about_us, name='about'),
     path('blogs/search/', BlogView.search, name='search'),
+    
+    # register and authentication
     path('register/', views.register, name='register'),
     path('login/', views.login, name='login'),
     path('logout/', views.logout, name='logout'),
+    
+    #dashboard
+    path('dashboard/', include('dashboards.urls')),
 ] +static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

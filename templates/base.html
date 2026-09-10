@@ -10,6 +10,7 @@
     <title>Django Blogs</title>
     <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link href="{% static 'css/blog.css' %}" rel="stylesheet">
 </head>
 <body>
@@ -33,9 +34,7 @@
                     <a class="btn btn-sm btn-outline-secondary" href="{% url 'register' %}">Register</a>
                 </div>
                 {% else %}
-                <span>Logged In as {{ user }}</span>
-                &emsp;
-                &emsp;
+                <span><a class="btn btn-sm btn-outline-secondary" href="{% url 'dashboard' %}">dashboard</a></span>
                 <span>
                     <div class="col-4 d-flex justify-content-end align-items-center">
                         <a class="btn btn-sm btn-warning" href="{% url 'logout' %}">Logout</a>
@@ -62,10 +61,11 @@
 <!-- Main content end -->
 
 <!-- Footer Start -->
+    
+        <footer class="blog-footer">
+            <p>Django blog built with Django by <a href="#">Focus Nest</a></p>
+        </footer>
     </div>
-<footer class="blog-footer">
-    <p>Django blog built with Django by <a href="#">Focus Nest</a></p>
-</footer>
 </body>
 </html>
 <!-- Footer end -->
