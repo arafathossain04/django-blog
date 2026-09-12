@@ -23,6 +23,38 @@
                 <!-- Post content-->
                 <section class="mb-5">
                     <p class="fs-5 mb-4">{{ single_blog.blog_body }}</p>
+
+                    <!-- comments -->
+                    <h2 class="text-warning">Comments({{ comment_count }})</h2>
+                    <div class="form-group">
+                        {% if user.is_authenticated %}
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <textarea name="comment" class="form-control" placeholder="Leave your comment here..."></textarea>
+                                <input type="submit" value="submit" class="btn btn-warning mt-2">
+                            </div>
+                        </form>
+                        {% else %}
+                        <a href="{% url 'login' %}"><p class="btn btn-warning">Please login to write a comment.</p></a>
+                        {% endif %}
+                    </div>
+                    {% if comments %}
+                    {% for com in comments %}
+                    <div class="card mt-1">
+                        <div class="card-body">
+                            <h5>Comment by {{ com.user }}
+                            <span>
+                                <small>({{ com.created_at | timesince }} ago)</small>
+                            </span>
+                            </h5>
+                            <p class="card-text mb-0">{{ com }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <p>No comments yet</p>
+                    {% endif %}   
                 </section>
             </article>
         </div>
